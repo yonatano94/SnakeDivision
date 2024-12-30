@@ -32,6 +32,8 @@ public struct SerializableVector2Int
     }
 }
 
+// missing namespcae
+// This save system is tightly coupled to the specific game code, such as SnakeController.
 public class SaveSystem : MonoBehaviour
 {
     [Inject] private GameSettings settings;
@@ -105,7 +107,8 @@ public class SaveSystem : MonoBehaviour
         List<Vector2Int> snakeBody = saveData.snakeBody.ConvertAll(v => v.ToVector2Int());
         List<Vector2Int> itemPositions = saveData.itemPositions.ConvertAll(v => v.ToVector2Int());
         Vector2Int lastDirection = saveData.lastDirection.ToVector2Int();
-
+        
+        //why are you switching to main thread? 
         await SwitchToMainThread();
 
         gridSystem.Initialize();
@@ -118,6 +121,7 @@ public class SaveSystem : MonoBehaviour
 
         itemManager.ClearAllItems();
 
+        // why does the save system doing the spawnitems
         foreach (Vector2Int itemPos in itemPositions)
         {
             itemManager.SpawnItemAt(itemPos);
@@ -125,9 +129,10 @@ public class SaveSystem : MonoBehaviour
 
         return true;
     }
-
+    
     private async Task SwitchToMainThread()
     {
+        //why this will switch to the main thread?
         await Task.Yield();
     }
 

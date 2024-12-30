@@ -3,9 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+//missing namespace
+//name of the class has nothing to do with the grid
+//this class kind of gameManger that knows every class in the game for some reason also mange the ui
+//there is a lot of circular dependencies and strong coupling of this class and a lot of other class
 public class GridManager : MonoBehaviour
 {
     [Header("Components")]
+    //why not to use inject method
     [Inject] private GridSystem gridSystem;
     [Inject] private ItemManager itemManager;
     [Inject] private SnakeController snakeController;

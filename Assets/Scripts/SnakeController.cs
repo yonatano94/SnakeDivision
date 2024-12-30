@@ -12,6 +12,7 @@ public class SnakeController : MonoBehaviour
     [Inject] private InputHandler inputHandler;
     [Inject] private ItemManager itemManager;
     [Inject] private UIManager uiManager;
+    //hard coded strings
     [Inject(Id = "SnakeSegment")] private GameObject SnakeSegmentPrefab;
     [Inject(Id = "CenterIndicator")] private GameObject CenterIndicatorPrefab;
 
